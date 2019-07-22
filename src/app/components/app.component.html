@@ -1,0 +1,12 @@
+<div id="header">
+  <nav><a routerLink="/dashboard" routerLinkActive="active">{{title}}</a></nav>
+  <button mat-button (click)="show()">
+    <mat-icon>info</mat-icon>
+    <span>about</span>
+  </button>
+  <button mat-button (click)="filter()">
+    <mat-icon>grid_on</mat-icon>
+    <span>filter</span>
+  </button>
+</div>
+<router-outlet></router-outlet>

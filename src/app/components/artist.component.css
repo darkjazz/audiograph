@@ -1,0 +1,110 @@
+h2{
+  width: 100%;
+  text-align: left;
+  display: inline-block;
+}
+
+label {
+  display: inline-block;
+  /*margin: .5em 0;*/
+  color: #607D8B;
+  color: rgb(0,120,215);
+  font-weight: bold;
+  padding-right: 3px;
+}
+input {
+  height: 2em;
+  font-size: 1em;
+  padding-left: .4em;
+}
+button {
+  margin-top: 20px;
+  font-family: Arial;
+  background-color: #eee;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer; cursor: hand;
+}
+button:hover {
+  background-color: #cfd8dc;
+}
+button:disabled {
+  background-color: #eee;
+  color: #ccc;
+  cursor: auto;
+}
+.mbid{
+  font-size: x-small;
+}
+
+.artist_image{
+  display: inline-block;
+}
+
+.artist_image img{
+  border: 1pt solid #aaa;
+  border-radius: 4pt;
+  max-height: 300px;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
+
+.abstract{
+  display: inline-block;
+  margin-bottom: 23px;
+  width: 50%;
+  min-height: 113px;
+  max-height: 147px;
+  overflow-y: scroll;
+  padding: 5px;
+  border: 1px #444 solid;
+  border-radius: 4pt;
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  margin-left: -10px;
+}
+
+.player{
+  display: inline-block;
+  width: 40%;
+  float: right;
+}
+
+.links {
+  margin-left: -40px;
+  display: inline-block;
+  width: 50%;
+}
+
+.links li{
+  float: left;
+  display: block;
+  margin-right: 10px;
+}
+
+.links li img{
+  height: 37px;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+  border: 1pt solid #aaa;
+  border-radius: 4pt;
+  -webkit-transition: opacity .4s ease, background .4s ease;
+  transition: opacity .4s ease, background .4s ease;
+
+}
+
+.links li img:hover{
+  cursor: pointer;
+  color: #000;
+  -webkit-text-stroke-color: #fff;
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+}
+
+.tags{
+  font-size: smaller;
+  color: #999;
+  display: inline-block;
+  margin-left: 10px;
+}

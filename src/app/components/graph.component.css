@@ -1,0 +1,34 @@
+.links line {
+  stroke: #ffffff;
+  stroke-opacity: 1.0;
+  /*stroke-width: 3px;*/
+}
+
+.nodes circle {
+  stroke: #000;
+  stroke-width: 4px;
+}
+
+.show {
+  font-size: 10pt;
+  opacity: 0.9;
+}
+
+.hide {
+  font-size: 7.5pt;
+  opacity: 0.25;
+}
+
+.grouplabel {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 10;
+  font-family: "Nunito";
+  font-size: 11pt;
+  border: 1pt solid #aaa;
+  border-radius: 4pt;
+  background-color: #333;
+  opacity: 0.9;
+  padding: 10px;
+}

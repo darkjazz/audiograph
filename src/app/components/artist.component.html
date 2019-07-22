@@ -1,0 +1,13 @@
+<spinner *ngIf="showSpinner"></spinner>
+<div *ngIf="!showSpinner">
+  <h2>{{artist.name}}<span *ngIf="artist.tags" class="tags">({{ artist.tags }})</span></h2>
+  <div>
+    <ul class="links">
+      <li><div *ngIf="artist.id" class="mbid"><a target="_blank" [href]="'http://musicbrainz.org/artist/'+artist.id"><img src="./assets/musicbrainz.png"></a></div></li>
+      <li><div *ngIf="artist.name" class="mbid"><a target="_blank" [href]="'https://www.youtube.com/results?search_query='+artist.name"><img src="./assets/youtube.png"></a></div></li>
+    </ul>
+  </div>
+  <artist-graph *ngIf="showGraph()"
+    [setArtist]="artist">
+  </artist-graph>
+</div>
