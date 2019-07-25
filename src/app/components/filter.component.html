@@ -1,4 +1,19 @@
 <div>
-
-
+  <table>
+    <thead>
+      <th></th><th *ngFor="let _category of categories">{{ _category }}</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let _similarity of similarities">
+        <td>{{ _similarity }}</td>
+        <td *ngFor="let _category of categories">
+          <mat-checkbox (change)="select(_category, _similarity)" [checked]="similarityCategories[_category][_similarity]">
+          </mat-checkbox>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button mat-icon-button (click)="apply()">
+    <mat-icon>check_circle</mat-icon><span>APPLY</span>
+  </button>
 </div>

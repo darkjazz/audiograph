@@ -2,7 +2,7 @@ import { NgModule }                 from '@angular/core';
 import { BrowserModule }            from '@angular/platform-browser';
 import { FormsModule }              from '@angular/forms';
 import { HttpModule, JsonpModule }  from "@angular/http";
-import { MatSidenavModule, MatIconModule, MatButtonModule } from '@angular/material';
+import { MatSidenavModule, MatIconModule, MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { BrowserAnimationsModule }  from '@angular/platform-browser/animations';
 import { OverlayModule }            from '@angular/cdk/overlay';
 import { PortalModule }             from '@angular/cdk/portal';
@@ -17,6 +17,7 @@ import { PlayerService }            from '../services/player.service';
 import { Spinner }                  from '../components/spinner.component';
 import { GraphComponent }           from '../components/graph.component';
 import { InfoComponent }            from '../components/info.component';
+import { FilterComponent }          from '../components/filter.component';
 
 @NgModule({
   imports:      [
@@ -28,6 +29,7 @@ import { InfoComponent }            from '../components/info.component';
     MatSidenavModule,
     MatIconModule,
     MatButtonModule,
+    MatCheckboxModule,
     BrowserAnimationsModule,
     OverlayModule,
     PortalModule
@@ -37,6 +39,7 @@ import { InfoComponent }            from '../components/info.component';
     Spinner,
     GraphComponent,
     InfoComponent,
+    FilterComponent,
     routedComponents
   ],
   providers:    [
@@ -46,6 +49,6 @@ import { InfoComponent }            from '../components/info.component';
     PlayerService
   ],
   bootstrap:    [ AppComponent ],
-  entryComponents: [ InfoComponent ]
+  entryComponents: [ InfoComponent, FilterComponent ]
 })
 export class AppModule { }

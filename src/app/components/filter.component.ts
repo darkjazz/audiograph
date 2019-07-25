@@ -1,19 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, Output }  from '@angular/core';
+import { ArtistService }      from '../services/artist.service';
 
 @Component({
   selector: 'filter',
   templateUrl: 'filter.component.html',
-  styleUrls: ['filter.component.css']
+  styleUrls: ['filter.component.scss']
 })
 export class FilterComponent {
 
-  grid;
+  categories;
+  similarities;
+  similarityCategories;
 
-  constructor() {
-    this.grid = [
-      [ "Chords", "Tempo", "Timbre", "Audio" ],
-      [ "Rank", "Heat", "Inference", "Maximum" ]
-    ];
+  constructor(private artistService: ArtistService) {
+    this.similarityCategories = this.artistService.getSimilarityCategories();
+    this.categories = this.artistService.getCategories();
+    this.similarities = this.artistService.getSimilarities();
+  }
+
+  select(category, similarity) {
+    this.artistService.setSimilarityCategory(category, similarity);
+  }
+
+  apply() {
+    this.artistService.saveFilter();
+    window.location.reload();
   }
 
 }

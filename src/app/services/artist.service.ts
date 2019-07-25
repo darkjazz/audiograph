@@ -22,8 +22,42 @@ const FILTER = {
 
 @Injectable()
 export class ArtistService {
-  private artistsUrl = 'app/artists'
-  constructor(private http: Http) { }
+  private artistsUrl = 'app/artists';
+  private categories = [ "Chords", "Rhythm", "Timbre", "Audio" ];
+  private similarities = [ "Rank", "Heat", "Inference", "Maximum" ];
+  private similarityCategories;
+  constructor(private http: Http) {
+    if (!sessionStorage["audiograph-filter"])
+      sessionStorage["audiograph-filter"] = "1111111111111111";
+    console.log(sessionStorage["audiograph-filter"]);
+    this.similarityCategories = this.unpackFilter();
+    // this.categories.forEach(_category => {
+    //   this.similarityCategories[_category] = { };
+    //   this.similarities.forEach(_similarity => {
+    //     this.similarityCategories[_category][_similarity] = true;
+    //   })
+    // })
+  }
+
+  getSimilarityCategories() {
+    return this.similarityCategories;
+  }
+
+  getSimilarities() {
+    return this.similarities;
+  }
+
+  getCategories() {
+    return this.categories;
+  }
+
+  setSimilarityCategory(category, similarity) {
+    this.similarityCategories[category][similarity] = !this.similarityCategories[category][similarity];
+  }
+
+  saveFilter() {
+    this.packFilter()
+  }
 
   getArtists(): Promise<Artist[]> {
     return this.http
@@ -171,7 +205,8 @@ export class ArtistService {
 
   public getArtistGraph(artist: Artist): Promise<Graph> {
     var id = artist.id;
-    var params = `/${ id }`;
+    var filter = this.packFilter();
+    var params = `/${ id }/${ filter }`;
     var uri = Config.server + Config.artist + '/get_artist_graph' + params;
     return this.http.get(uri)
       .toPromise()
@@ -179,6 +214,32 @@ export class ArtistService {
         return res.json() as Graph;
       })
       .catch(this.handleError)
+  }
+
+  private packFilter(): string {
+    var filter = "";
+    this.categories.forEach(_category => {
+      this.similarities.forEach(_similarity => {
+        filter += (this.similarityCategories[_category][_similarity] | 0).toString();
+      })
+    });
+    sessionStorage["audiograph-filter"] = filter;
+    console.log(sessionStorage["audiograph-filter"]);
+    return filter;
+  }
+
+  private unpackFilter() {
+    var filter = sessionStorage["audiograph-filter"];
+    var similarity_categories = { }
+    var i = 0;
+    this.categories.forEach(category => {
+      similarity_categories[category] = { }
+      this.similarities.forEach(similarity => {
+        similarity_categories[category][similarity] = parseInt(filter[i]);
+        i++;
+      })
+    });
+    return similarity_categories;
   }
 
   public logCategory(category: string) {
